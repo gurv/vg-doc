@@ -52,6 +52,11 @@ https://github.com/gurv/vg-ops[DevOps...]
 |monitoring
 |9090 (Prometheus), 9091 (PushGateway), 9182 (WMI Exporter), 9100 (Node Exporter), 3000 (Grafana)
 
+|streams
+|2181 (Zookeeper),
+9092 1234 (Kafka),
+18081 (Kafka Schema Registry)
+
 |samples
 |8101 (SampleOperation), 8102 (SampleAccount)
 
@@ -236,6 +241,13 @@ gradle build
 Тайминг 20170303: 2 mins 3.568 secs
 ====
 
+* Удаление всех сборок
+
+[source]
+----
+gradle clean
+----
+
 * Запуск Kafka локально на Windows
 
 [source]
@@ -257,38 +269,6 @@ gradle dockerImage
 * На этапе сборки подпроекта web может быть сообщение "FAILURE: Build failed with an exception." - игнорировать
 ====
 
-* Запуск в Docker-е с локальными файлами данных DB-хранилища
-
-[source]
-----
-docker-compose -f docker-compose.dev.db.yml -f docker-compose.dev.services.yml up -d
-----
-[TIP]
-====
-По состоянию на 20170303: требуется 2 шт. таких запуска, т.к. при первом пуске сервис Gateway так и не соединился с сервисом Config
-====
-
-* Запуск в Docker-е Stream-инфраструктуры (Kafka/...)
-
-[source]
-----
-docker-compose -f docker-compose.dev.stream.yml  up -d
-----
-
-* Останов сервисов в Docker-е
-
-[source]
-----
-docker-compose -f docker-compose.dev.services.yml stop
-----
-
-* Останов базы данных в Docker-е
-
-[source]
-----
-docker-compose -f docker-compose.dev.db.yml stop
-----
-
 * Создание ключей
 
 [source]
@@ -296,19 +276,6 @@ docker-compose -f docker-compose.dev.db.yml stop
 C:\app\java\jre1.8.0_92\bin\keytool.exe -genkeypair -alias vg -keyalg RSA -dname "CN=vg" -keystore vg.jks -keypass 1q2w3e4r -storepass 1q2w3e4r
 C:\app\java\jre1.8.0_92\bin\keytool.exe -export -keystore vg.jks -alias vg -rfc -storepass 1q2w3e4r -file vg.cer
 C:\app\openSSL\bin\openssl.exe x509 -inform pem -pubkey -in vg.cer
-----
-
-* Удаление контейнеров остановленных сервисов в Docker-е
-
-[source]
-----
-docker-compose -f docker-compose.dev.db.yml -f docker-compose.dev.services.yml rm
-----
-
-* Удаление всех сборок
-[source]
-----
-gradle clean
 ----
 
 == Документация
@@ -323,20 +290,6 @@ gradle asciidoctor
 [source]
 ----
 documentation/build/asciidoc/html5/notes.html
-----
-
-== Примеры
-
-* Запуск/останов/уборка БД, Zookeeper, Kafka, Dataflow, мониторинг и Swagger в Docker-е
-[source]
-----
-docker swarm init
-docker stack deploy -c docker-stack.dev.db.yml vg
-docker stack deploy -c docker-stack.dev.stream.yml vg
-docker stack deploy -c docker-stack.dev.core.yml vg
-docker stack deploy -c docker-stack.dev.monitoring.yml vg
-docker stack rm vg
-docker volume prune --force
 ----
 
 === Операции
