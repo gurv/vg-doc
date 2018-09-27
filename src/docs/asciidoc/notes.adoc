@@ -49,6 +49,9 @@ https://github.com/gurv/vg-ops[DevOps...]
 |swagger
 |8084
 
+|jenkins
+|8085
+
 |monitoring
 |9090 (Prometheus), 9091 (PushGateway), 9182 (WMI Exporter), 9100 (Node Exporter), 3000 (Grafana)
 
