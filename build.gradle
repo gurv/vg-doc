@@ -9,6 +9,10 @@ buildscript {
     }
 }
 
+plugins {
+    id 'org.ajoberstar.git-publish' version '2.0.0'
+}
+
 apply plugin: 'org.asciidoctor.convert'
 
 asciidoctor {
@@ -17,8 +21,17 @@ asciidoctor {
         'imagesdir': 'images'
     sources { include '*.adoc' }
     requires 'asciidoctor-diagram'
+    outputDir 'build'
 }
 
 build {
     dependsOn asciidoctor
+}
+
+gitPublish {
+    repoUri = 'git@github.com:gurv/vg-doc.git'
+    branch = 'gh-pages'
+    contents {
+        from 'build/html5'
+    }
 }
