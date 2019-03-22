@@ -1,5 +1,10 @@
 = Документация
 
-* На https://pages.github.com/[GitHub Pages]: https://gurv.github.io/vg-doc/index.html
+На GitHub Pages: https://gurv.github.io/vg-doc/index.html
 
-* Сборка в https://travis-ci.org/[Travis CI]: https://travis-ci.org/gurv/vg-doc
+CI: https://travis-ci.org/gurv/vg-doc[сборки]
+
+```
+# в GitHub Pages
+gradle build gitPublishPush
+```
