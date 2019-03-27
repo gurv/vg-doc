@@ -4,6 +4,23 @@
 
 == О проекте
 
+* CI
+
+[plantuml, CI, png]
+....
+[GitHub] as git
+[GitHub Pages] as pages
+[Travis CI] as travis
+[SonarCloud] as sonar
+[Sonatype OSSRH] as nexus
+[DockerHub] as docker
+git --> travis
+travis --> sonar
+travis --> nexus
+travis --> docker
+travis --> pages
+....
+
 * Исходный код
 
 https://github.com/gurv/vg-middle[middleware]
