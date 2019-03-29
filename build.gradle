@@ -33,7 +33,6 @@ build {
 }
 
 gitPublish {
-    dependsOn build
     branch = 'gh-pages'
     contents {
         from 'build/html5'
@@ -44,3 +43,5 @@ gitPublish {
         repoUri = "git@github.com:${repoPath}.git"
     }
 }
+
+gitPublishPush.dependsOn build
