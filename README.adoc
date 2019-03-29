@@ -1,10 +1,5 @@
 = Документация
 
-На GitHub Pages: https://gurv.github.io/vg-doc/index.html
+GitHub Pages: https://gurv.github.io/vg-doc/index.html
 
-CI: https://travis-ci.org/gurv/vg-doc[сборки]
-
-```
-# в GitHub Pages
-gradle build gitPublishPush
-```
+CI: https://travis-ci.org/gurv/vg-doc
