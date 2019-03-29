@@ -4,6 +4,23 @@
 
 == О проекте
 
+* Репозитории
+
+https://github.com/gurv/vg-doc
+
+* Инструменты
+
+[plantuml, dev-env, png]
+....
+[Docker]
+[Gradle] ..> [Java]
+[Asciidoc] ..> [Java]
+[Asciidoc] ..> [GraphViz]
+[Webpack] ..> [NodeJS]
+[Angular] ..> [NodeJS]
+[Angular] ..> [Webpack]
+....
+
 * CI
 
 [plantuml, CI, png]
@@ -20,18 +37,6 @@ travis --> nexus
 travis --> docker
 travis --> pages
 ....
-
-* Исходный код
-
-https://github.com/gurv/vg-middle[middleware]
-
-https://github.com/gurv/vg[backend]
-
-https://github.com/gurv/vg-web[web]
-
-https://github.com/gurv/vg-doc[documentation]
-
-https://github.com/gurv/vg-ops[DevOps...]
 
 == Сервисы
 
@@ -237,21 +242,6 @@ API
 
 * Swagger
 http://localhost:8084/swagger-ui.html
-
-== Разработчику
-
-* Инструменты
-
-[plantuml, dev-env, png]
-....
-[Docker]
-[Gradle] ..> [Java]
-[Asciidoc] ..> [Java]
-[Asciidoc] ..> [GraphViz]
-[Webpack] ..> [NodeJS]
-[Angular] ..> [NodeJS]
-[Angular] ..> [Webpack]
-....
 
 == Примеры
 
