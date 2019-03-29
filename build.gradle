@@ -13,6 +13,10 @@ plugins {
     id 'org.ajoberstar.git-publish' version '2.0.0'
 }
 
+ext {
+    repoPath = 'gurv/vg-doc'
+}
+
 apply plugin: 'org.asciidoctor.convert'
 
 asciidoctor {
@@ -29,9 +33,14 @@ build {
 }
 
 gitPublish {
-    repoUri = 'git@github.com:gurv/vg-doc.git'
+    dependsOn build
     branch = 'gh-pages'
     contents {
         from 'build/html5'
+    }
+    if (System.env.GRGIT_PASS) {
+        repoUri = "https://github.com/${repoPath}.git"
+    } else {
+        repoUri = "git@github.com:${repoPath}.git"
     }
 }
