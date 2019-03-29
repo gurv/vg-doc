@@ -45,3 +45,9 @@ gitPublish {
 }
 
 gitPublishPush.dependsOn build
+
+wrapper {
+    gradleVersion = '5.3'
+}
+
+defaultTasks 'build'
