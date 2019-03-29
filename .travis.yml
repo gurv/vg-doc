@@ -2,6 +2,8 @@ language: java
 install: true
 jdk: oraclejdk8
 script: ./gradlew build gitPublishPush
+before_install:
+  - sudo apt-get install graphviz
 before_cache:
   - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
   - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
