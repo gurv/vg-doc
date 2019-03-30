@@ -35,11 +35,13 @@ https://github.com/gurv
 [SonarCloud] as sonar
 [Sonatype OSSRH] as nexus
 [DockerHub] as docker
+[Slack] as slack
 git --> travis
 travis --> sonar
 travis --> nexus
 travis --> docker
 travis --> pages
+travis --> slack
 ....
 
 == Сервисы
