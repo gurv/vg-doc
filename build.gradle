@@ -13,6 +13,8 @@ plugins {
     id 'org.ajoberstar.git-publish' version '2.0.0'
 }
 
+version '0.1.0-SNAPSHOT'
+
 ext {
     repoPath = 'gurv/vg-doc'
 }

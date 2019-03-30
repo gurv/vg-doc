@@ -1,12 +1,16 @@
+= vg
+:author: Гуринович Владимир
+:email: vladimir.gurinovich@gmail.com
+:noheader
 :toc-title: Содержимое
 :images: ./images
 :icons: font
 
-== О проекте
+== Обзор
 
 * Репозитории
 
-https://github.com/gurv/vg-doc
+https://github.com/gurv
 
 * Инструменты
 
