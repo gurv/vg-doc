@@ -3,12 +3,15 @@ install: true
 jdk: oraclejdk8
 script: ./gradlew build gitPublishPush
 before_install:
-  - sudo apt-get install graphviz
+- sudo apt-get install graphviz
 before_cache:
-  - rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
-  - rm -fr $HOME/.gradle/caches/*/plugin-resolution/
-  - rm -fr $HOME/.gradle/caches/*/scripts/
+- rm -f  $HOME/.gradle/caches/modules-2/modules-2.lock
+- rm -fr $HOME/.gradle/caches/*/plugin-resolution/
+- rm -fr $HOME/.gradle/caches/*/scripts/
 cache:
   directories:
-    - "$HOME/.gradle/caches/"
-    - "$HOME/.gradle/wrapper/"
+  - "$HOME/.gradle/caches/"
+  - "$HOME/.gradle/wrapper/"
+notifications:
+  slack:
+    secure: ieqItLgO5cV/PX4UR5pXG38zoFE98yjQ1emA3lGvFIzFiGrCVYcX8YQZiFPZCBt/CYGQfHOdV35j4BwwZRn6emb+VnoHLIDjT4i0XoAn+dMgMp8Ko6aKEY0PkJ3y/b1mU2DmawDSvnN31Zunv28roO4UtctLVK9XzgEJvSZAiygFeXxMWoK0pTtqqatapXzkWSXJToR8IMdKPbh9RGBvW6WZXm2X5U9qGgcyx7Nt3pf4BZeySLvsRBbnN8cuExpqPVhqHgrl/vvKlelA4oqAebzPmeBoFeCotakQKXtPZSGA2F95q6ECKorcsuH6zaTeBoi26DWYWS2ovCSmLOdkHHMlghtjxjjtCqrc1R5/t6O32bY/v2N91Cgkl9EQCZxO80vDNr085LFTyMVoMgrumBE7RlQOvoqY0/3ziLkR3MaaOQRYFB5/UGi0tjQziSLXEij1qrEBEDWgNXSpwlMuBE/Ww04mShTq3fJGZAVIAs6qfi1WgIibZ8VQiLRKyZM2q0qn268fZuUsP14Qri4YCcAp0Qn1ycvPcDnY0duwqSSRicwHOUJPIflrdVEBQNyKZrduRAfn0uJCHhHxWoWQEHDsAHO4rsAhtUn7rB71lkTqBayvRPNZlfOftd8TFQbxMeqOa+n8lHl4t5Ofxt6RRs2sjMFf8kollrNiJBsKG1Y=
