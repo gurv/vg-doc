@@ -44,6 +44,31 @@ travis --> pages
 travis --> slack
 ....
 
+[cols="2*", options="header"]
+|===
+|Сервис
+|
+
+|GitHub
+|https://github.com/gurv
+
+|Travis CI
+|https://travis-ci.org/gurv
+
+|SonarCloud
+|https://sonarcloud.io/explore/projects
+
+|Sonatype OSSRH
+|https://oss.sonatype.org/
+
+|DockerHub
+|https://hub.docker.com/
+
+|Slack
+|https://vg-support.slack.com/messages/CH9ABGUPR/
+|===
+
+
 == Сервисы
 
 * Порты
