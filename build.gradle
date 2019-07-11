@@ -51,7 +51,10 @@ sonarqube {
 gitPublish {
     branch = 'gh-pages'
     contents {
-        from 'build/html5'
+        from ("${buildDir}/html5") {
+            include '**/*'
+            exclude '**/.asciidoctor'
+        }
     }
     if (System.env.GRGIT_PASS) {
         repoUri = "https://github.com/${repoPath}.git"
