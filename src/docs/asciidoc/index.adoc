@@ -3,7 +3,6 @@
 :email: vladimir.gurinovich@gmail.com
 :noheader
 :toc-title: Содержимое
-:images: ./images
 :icons: font
 
 == Обзор
