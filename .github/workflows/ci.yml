@@ -1,9 +1,14 @@
-name: ci
-on: [push]
+name: CI
+on:
+  push:
+    branches:
+      - master
 jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+    - name: Graphviz
+      run: sudo apt-get install graphviz
     - name: Checkout
       uses: actions/checkout@v1
     - name: Java
@@ -11,5 +16,30 @@ jobs:
       with:
         java-version: 11
     - name: Build
-      run: |
-        ./gradlew build
+      run: ./gradlew build
+    - name: Sonar
+      run: ./gradlew sonar
+      env:
+        GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        SONAR_TOKEN: ${{ secrets.SONAR_TOKEN }}
+    - name: GitHub Pages
+      uses: peaceiris/actions-gh-pages@v3
+      with:
+        github_token: ${{ secrets.GITHUB_TOKEN }}
+        publish_dir: ./build/docs/asciidoc
+        exclude_assets: '**/.asciidoctor'
+    - name: Slack
+      if: always()
+      uses: 8398a7/action-slack@v3
+      with:
+        status: ${{ job.status }}
+        fields: repo,message,workflow,job
+      env:
+        SLACK_WEBHOOK_URL: ${{ secrets.SLACK_WEBHOOK_URL }}
+    - name: Telegram
+      uses: appleboy/telegram-action@master
+      if: always()
+      with:
+        to: ${{ secrets.TELEGRAM_TO }}
+        token: ${{ secrets.TELEGRAM_TOKEN }}
+        args: ${{ github.repository }} ${{ github.workflow }} ${{ github.job }} ${{ job.status }}
